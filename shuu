@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Shruti ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#080609;
+    color:#fff;
+    font-family:Poppins,sans-serif;
+    overflow-x:hidden;
+}
+
+/* Floating hearts */
+.heart{
+    position:fixed;
+    bottom:-30px;
+    color:#ff6f9f;
+    animation:float 7s linear forwards;
+    pointer-events:none;
+    z-index:10;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+    20%{opacity:.8;}
+    100%{
+        transform:translateY(-110vh) rotate(30deg);
+        opacity:0;
+    }
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px 20px;
+
+    background:
+    radial-gradient(circle at 50% 20%,#45182e 0%,#160b12 35%,#080609 70%);
+}
+
+.small{
+    color:#ff9fbe;
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+h1{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(65px,15vw,130px);
+    line-height:.8;
+    margin:25px 0;
+}
+
+h1 span{
+    color:#ff6f9f;
+    text-shadow:0 0 35px #ff4d8a;
+}
+
+.subtitle{
+    color:#b9aab1;
+    font-size:14px;
+}
+
+.countdown{
+    display:flex;
+    gap:10px;
+    margin:40px 0 25px;
+}
+
+.time{
+    width:75px;
+    padding:15px 5px;
+    border:1px solid #ffffff18;
+    border-radius:18px;
+    background:#ffffff08;
+    backdrop-filter:blur(10px);
+}
+
+.time b{
+    display:block;
+    font-size:25px;
+}
+
+.time small{
+    color:#9e8d95;
+    font-size:9px;
+    text-transform:uppercase;
+}
+
+.music{
+    padding:13px 25px;
+    border-radius:30px;
+    border:1px solid #ff719f77;
+    background:#ff719f15;
+    color:#ffd9e5;
+    cursor:pointer;
+    font-family:Poppins;
+}
+
+.scroll{
+    margin-top:60px;
+    color:#766870;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+/* LETTER */
+
+section{
+    padding:100px 20px;
+}
+
+.card{
+    max-width:700px;
+    margin:auto;
+    padding:55px;
+    border-radius:30px;
+    background:linear-gradient(145deg,#1a1218,#0e0a0e);
+    border:1px solid #ffffff12;
+    box-shadow:0 25px 80px #000;
+}
+
+.label{
+    color:#ff9fbe;
+    letter-spacing:4px;
+    font-size:10px;
+    text-transform:uppercase;
+}
+
+h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:55px;
+    margin:15px 0 25px;
+}
+
+.card p{
+    color:#d3c7cc;
+    font-size:14px;
+    line-height:2;
+    margin:18px 0;
+}
+
+.signature{
+    font-family:"Cormorant Garamond",serif;
+    font-size:27px !important;
+    color:#ffc9da !important;
+    margin-top:35px !important;
+}
+
+/* PHOTO */
+
+.memories{
+    text-align:center;
+}
+
+.memories h2{
+    margin-bottom:10px;
+}
+
+.photos{
+    max-width:900px;
+    margin:35px auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.photos img{
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    border-radius:20px;
+    border:1px solid #ffffff15;
+}
+
+/* FINAL */
+
+.final{
+    min-height:80vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.final h2{
+    font-size:60px;
+}
+
+.final p{
+    color:#c5b5bc;
+    line-height:2;
+    font-size:13px;
+}
+
+.bigheart{
+    font-size:90px;
+    color:#ff6f9f;
+    text-shadow:0 0 50px #ff4d8a;
+    animation:pulse 1.5s infinite;
+    margin:25px;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+.last{
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px !important;
+    color:#ffc9da !important;
+}
+
+@media(max-width:600px){
+
+    .countdown{
+        gap:6px;
+    }
+
+    .time{
+        width:68px;
+    }
+
+    .card{
+        padding:30px 25px;
+    }
+
+    .final h2{
+        font-size:45px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+
+<div class="hero">
+
+<p class="small">for my favourite girl ♡</p>
+
+<h1>
+Happy Birthday<br>
+<span>Shruti</span> ✨
+</h1>
+
+<p class="subtitle">
+for my Shuu, my favourite person, my forever smile.
+</p>
+
+<div class="countdown">
+
+<div class="time">
+<b id="days">00</b>
+<small>Days</small>
+</div>
+
+<div class="time">
+<b id="hours">00</b>
+<small>Hours</small>
+</div>
+
+<div class="time">
+<b id="minutes">00</b>
+<small>Minutes</small>
+</div>
+
+<div class="time">
+<b id="seconds">00</b>
+<small>Seconds</small>
+</div>
+
+</div>
+
+<button class="music" onclick="playMusic()">
+♡ Play our song
+</button>
+
+<audio id="song" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+</audio>
+
+<p class="scroll">
+scroll down ↓
+</p>
+
+</div>
+
+
+<!-- ================= LETTER ================= -->
+
+<section>
+
+<div class="card">
+
+<p class="label">
+a little birthday letter
+</p>
+
+<h2>
+Dear Shuu,
+</h2>
+
+<p>
+Happy birthday, my Shruti, my Shuu, my most precious girl. ♡
+I still don't know how you managed to become this important to me,
+but somehow you did. And now, every part of you feels like a little home to me.
+</p>
+
+<p>
+I love the way you get angry, the way you pout, the way you act annoyed,
+and the way I still end up smiling because of you. I love irritating you,
+I love teasing you, and I love how your little reactions make my heart feel so full.
+Even your tiny mood swings and your "Guu" obsession somehow become adorable to me.
+</p>
+
+<p>
+I care about you in a way that feels deeper than words can explain.
+I care about your happiness, your peace, your heart, your silence,
+and even the moments when you say you're okay but I can see you're not.
+I care about the real you, the shy you, the tired you, the angry you,
+and the softest version of you that I never want to lose.
+</p>
+
+<p>
+You are not just someone I like or someone I talk to every day.
+You are the person who has found a place in my heart without even trying.
+You are my Shuu, my comfort, my favorite chaos, and the girl I would choose again and again.
+</p>
+
+<p>
+I hope this new year of your life brings you all the love, peace, laughter,
+and beautiful memories you deserve. More happiness. More calm. More reasons to smile.
+And maybe, just maybe, a little more of my luvv in your life too. ♡
+</p>
+
+<p>
+So today, my babbay, please let your heart be light for a while.
+Forget the tiredness, the worries, and everything else.
+Today is about you, because you deserve to feel celebrated,
+cherished, and deeply loved the way you always have been to me.
+</p>
+
+<p class="signature">
+Happy Birthday, my Shruti. 🖤<br>
+— your luvv
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ================= PHOTOS ================= -->
+
+<section class="memories">
+
+<p class="label">
+little pieces of us
+</p>
+
+<h2>
+Our Memories ♡
+</h2>
+
+<div class="photos">
+
+<img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Memory">
+
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80" alt="Memory">
+
+<img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" alt="Memory">
+
+</div>
+
+</section>
+
+
+<!-- ================= FINAL ================= -->
+
+<section class="final">
+
+<p class="label">
+one last thing, shuu...
+</p>
+
+<h2>
+You matter to me. ♡
+</h2>
+
+<p>
+No matter how many birthdays come after this one,<br>
+I hope you always remember how deeply you are loved, how precious you are,
+and how much your smile means to me.
+</p>
+
+<div class="bigheart">
+♥
+</div>
+
+<p class="last">
+Happy Birthday, my Shuu, my Shruti. ♡<br>
+Your luvv will always be cheering for you,
+protecting your peace, and loving you more than words can say.
+</p>
+
+</section>
+
+
+<script>
+
+/* ================= COUNTDOWN ================= */
+
+const birthday = new Date("October 3, 2026 00:00:00").getTime();
+
+function countdown(){
+
+    const now = new Date().getTime();
+
+    const distance = birthday - now;
+
+    if(distance <= 0){
+
+        document.querySelector(".countdown").innerHTML =
+        "<div class='time' style='width:300px'><b>IT'S SHUU DAY ♡</b></div>";
+
+        return;
+    }
+
+    const days =
+    Math.floor(distance/(1000*60*60*24));
+
+    const hours =
+    Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+
+    const minutes =
+    Math.floor((distance%(1000*60*60))/(1000*60));
+
+    const seconds =
+    Math.floor((distance%(1000*60))/1000);
+
+    document.getElementById("days").innerText =
+    String(days).padStart(2,"0");
+
+    document.getElementById("hours").innerText =
+    String(hours).padStart(2,"0");
+
+    document.getElementById("minutes").innerText =
+    String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds").innerText =
+    String(seconds).padStart(2,"0");
+}
+
+countdown();
+
+setInterval(countdown,1000);
+
+
+/* ================= MUSIC ================= */
+
+function playMusic(){
+
+    const song = document.getElementById("song");
+
+    if(song.paused){
+
+        song.play();
+
+        document.querySelector(".music").innerText =
+        "♡ Pause our song";
+
+    }else{
+
+        song.pause();
+
+        document.querySelector(".music").innerText =
+        "♡ Play our song";
+
+    }
+}
+
+
+/* ================= FLOATING HEARTS ================= */
+
+setInterval(function(){
+
+    const heart = document.createElement("div");
+
+    heart.className="heart";
+
+    heart.innerHTML=["♡","♥","✦"][Math.floor(Math.random()*3)];
+
+    heart.style.left =
+    Math.random()*100+"vw";
+
+    heart.style.fontSize =
+    (10+Math.random()*20)+"px";
+
+    heart.style.animationDuration =
+    (5+Math.random()*5)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
+
+},700);
+
+</script>
+
+</body>
+</html>
