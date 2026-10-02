@@ -48,6 +48,9 @@ body{
 }
 
 .hero{
+    position:relative;
+    isolation:isolate;
+    overflow:hidden;
     min-height:100vh;
     display:flex;
     flex-direction:column;
@@ -55,7 +58,29 @@ body{
     align-items:center;
     text-align:center;
     padding:30px 20px;
-    background:radial-gradient(circle at 50% 20%,#45182e 0%,#160b12 35%,#080609 70%);
+    background:
+    radial-gradient(1px 1px at 12% 22%,#ffe1ea99 50%,transparent 100%),
+    radial-gradient(1px 1px at 82% 18%,#ffe1ea88 50%,transparent 100%),
+    radial-gradient(1px 1px at 72% 68%,#ffe1ea77 50%,transparent 100%),
+    radial-gradient(1px 1px at 24% 76%,#ffe1ea88 50%,transparent 100%),
+    radial-gradient(ellipse at 50% 24%,#64243f 0%,#24101c 42%,#080609 78%);
+}
+
+.hero > *{
+    opacity:0;
+    animation:arrive .8s ease-out forwards;
+}
+
+.hero .small{animation-delay:.1s;}
+.hero h1{animation-delay:.25s;}
+.hero .subtitle{animation-delay:.4s;}
+.hero .countdown{animation-delay:.55s;}
+.hero .music{animation-delay:.7s;}
+.hero .scroll{animation-delay:.85s;}
+
+@keyframes arrive{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:translateY(0);}
 }
 
 .small{
@@ -67,8 +92,8 @@ body{
 
 h1{
     font-family:"Cormorant Garamond",serif;
-    font-size:clamp(65px,15vw,130px);
-    line-height:.8;
+    font-size:clamp(52px,12vw,130px);
+    line-height:.9;
     margin:25px 0;
 }
 
@@ -116,6 +141,13 @@ h1 span{
     color:#ffd9e5;
     cursor:pointer;
     font-family:Poppins;
+    transition:background .25s ease,transform .25s ease,border-color .25s ease;
+}
+
+.music:hover{
+    background:#ff719f30;
+    border-color:#ff9fbe;
+    transform:translateY(-2px);
 }
 
 .scroll{
@@ -129,14 +161,172 @@ section{
     padding:100px 20px;
 }
 
+.story-page{
+    display:none;
+    min-height:100svh;
+    padding-bottom:110px;
+}
+
+.story-page.is-active{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    animation:scene-in .45s ease-out both;
+}
+
+.story-page[hidden],
+.choice-reveal[hidden]{
+    display:none !important;
+}
+
+@keyframes scene-in{
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+.tease-page{
+    gap:18px;
+    text-align:center;
+    background:radial-gradient(ellipse at 50% 35%,#351827 0%,#100b10 68%);
+}
+
+.tease-page h2{
+    max-width:720px;
+    margin:4px 0;
+    font-size:clamp(42px,8vw,68px);
+}
+
+.tease-copy{
+    max-width:500px;
+    color:#d3c7cc;
+    font-size:15px;
+    line-height:1.8;
+}
+
+.choice-list{
+    display:grid;
+    width:min(100%,440px);
+    gap:12px;
+    margin-top:12px;
+}
+
+.choice-option{
+    min-height:54px;
+    padding:13px 18px;
+    border:1px solid #ff9fbe66;
+    border-radius:12px;
+    background:#ff719f12;
+    color:#ffe1ea;
+    font:500 14px Poppins,sans-serif;
+    cursor:pointer;
+    transition:background .2s ease,border-color .2s ease,transform .2s ease;
+}
+
+.choice-option:hover{
+    transform:translateY(-2px);
+    border-color:#ff9fbe;
+    background:#ff719f28;
+}
+
+.choice-reveal{
+    max-width:560px;
+    margin:0 auto 22px;
+    color:#ffc9da;
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px;
+    line-height:1.5;
+    text-align:center;
+}
+
+.page-controls{
+    position:fixed;
+    z-index:20;
+    right:0;
+    bottom:0;
+    left:0;
+    display:grid;
+    grid-template-columns:48px 1fr 48px;
+    align-items:center;
+    gap:16px;
+    padding:14px max(20px,calc((100vw - 680px)/2));
+    border-top:1px solid #ff9fbe20;
+    background:linear-gradient(180deg,#100b10e8,#100b10f7);
+    backdrop-filter:blur(14px);
+}
+
+.page-arrow{
+    display:grid;
+    width:46px;
+    height:46px;
+    place-items:center;
+    border:1px solid #ff9fbe66;
+    border-radius:50%;
+    background:#ff719f18;
+    color:#ffe1ea;
+    font-size:21px;
+    cursor:pointer;
+    transition:background .2s ease,transform .2s ease;
+}
+
+.page-arrow:hover:not(:disabled){
+    transform:translateY(-2px);
+    background:#ff719f35;
+}
+
+.page-arrow:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+}
+
+.page-arrow[hidden]{
+    display:none;
+}
+
+.page-status{
+    display:grid;
+    justify-items:center;
+    gap:7px;
+    color:#c5b5bc;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.progress-track{
+    width:min(100%,220px);
+    height:2px;
+    overflow:hidden;
+    background:#ffffff20;
+}
+
+.progress-fill{
+    display:block;
+    width:0;
+    height:100%;
+    background:#ff9fbe;
+    transition:width .35s ease;
+}
+
 .card{
+    position:relative;
+    overflow:hidden;
     max-width:700px;
     margin:auto;
     padding:55px;
-    border-radius:30px;
+    border-radius:20px;
     background:linear-gradient(145deg,#1a1218,#0e0a0e);
-    border:1px solid #ffffff12;
-    box-shadow:0 25px 80px #000;
+    border:1px solid #ff9fbe30;
+    box-shadow:0 25px 80px #000,0 0 45px #ff6f9f0c;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:12%;
+    width:76%;
+    height:1px;
+    background:linear-gradient(90deg,transparent,#ffd4e2,transparent);
 }
 
 .label{
@@ -193,6 +383,19 @@ h2{
     margin:25px;
 }
 
+@media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+        scroll-behavior:auto !important;
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+    }
+
+    .hero > *{
+        opacity:1;
+    }
+}
+
 @keyframes pulse{
     50%{
         transform:scale(1.15);
@@ -227,7 +430,7 @@ h2{
 
 <body>
 
-<div class="hero">
+<div class="story-page hero is-active">
 
 <p class="small">for my favourite girl ♡</p>
 
@@ -273,12 +476,58 @@ for my Shuu, my favourite person, my forever smile.
 </audio>
 
 <p class="scroll">
-scroll down ↓
+one little surprise at a time ♡
 </p>
 
 </div>
 
-<section>
+<section class="story-page tease-page choice-page">
+
+<p class="label">before the surprise...</p>
+
+<h2>Important birthday question 👀</h2>
+
+<p class="tease-copy">
+Who is the cutest person celebrating today? Choose carefully, Shuu. 😌
+</p>
+
+<div class="choice-list">
+<button class="choice-option" data-reveal-target="first-choice-reveal" data-reveal="That confidence is adorable. Don't let it go to your head, birthday girl. 😏💗" onclick="chooseOption(this)">
+Me. Obviously. 👑
+</button>
+<button class="choice-option" data-reveal-target="first-choice-reveal" data-reveal="Correct answer. I knew you would figure out that it's you, Shuu. 😉💕" onclick="chooseOption(this)">
+The birthday girl, of course 😇
+</button>
+</div>
+
+</section>
+
+<section class="story-page tease-page choice-page">
+
+<p class="choice-reveal" id="first-choice-reveal" role="status" hidden></p>
+
+<p class="label">one last test...</p>
+
+<h2>Ready for your surprise? 🎁</h2>
+
+<p class="tease-copy">
+Be honest. Are you going to pretend you had no idea I made something for you? 🙃
+</p>
+
+<div class="choice-list">
+<button class="choice-option" data-reveal-target="second-choice-reveal" data-reveal="I knew you'd say that. You're very easy to spoil, Shuu. 🎀💞" onclick="chooseOption(this)">
+Nope. I deserve to be spoiled 😌
+</button>
+<button class="choice-option" data-reveal-target="second-choice-reveal" data-reveal="A snack and a surprise? You drive a hard bargain, birthday girl. 🍰✨" onclick="chooseOption(this)">
+Only if there's cake involved 🍰
+</button>
+</div>
+
+</section>
+
+<section class="story-page letter-page">
+
+<p class="choice-reveal" id="second-choice-reveal" role="status" hidden></p>
 
 <div class="card">
 
@@ -293,14 +542,23 @@ Dear Shuu,
 <p>
 Happy birthday, my Shruti, my Shuu, my most precious girl. ♡
 I still don't know how you managed to become this important to me,
-but somehow you did. And now, every part of you feels like a little home to me.
+but somehow you did. And now, every part of you feels like a little home to me. 🏡💗
 </p>
 
 <p>
 I love the way you get angry, the way you pout, the way you act annoyed,
 and the way I still end up smiling because of you. I love irritating you,
 I love teasing you, and I love how your little reactions make my heart feel so full.
-Even your tiny mood swings and your "Guu" obsession somehow become adorable to me.
+Even your tiny mood swings and your "Guu" obsession somehow become adorable to me. 😅💕
+And I haven't forgotten that cute little video you promised me. I'm still waiting, birthday girl. 😏📹💕
+</p>
+
+<p>
+Honestly, you're the best person in my life, and I feel so lucky to have you in it. 🌷
+Sometimes you get angry and I don't even know why, but somehow it still makes me smile
+because it's just another little part of the person I love so much. And whatever happens,
+even after a difficult moment, we find our way back to each other. That means more to me
+than I can explain. I love you for all of you, Shuu. 🫶✨
 </p>
 
 <p>
@@ -308,13 +566,13 @@ I care about you in a way that feels deeper than words can explain.
 I care about your happiness, your peace, your heart, your silence,
 and even the moments when you say you're okay but I can see you're not.
 I care about the real you, the shy you, the tired you, the angry you,
-and the softest version of you that I never want to lose.
+and the softest version of you that I never want to lose. 🥺🤍
 </p>
 
 <p>
 You are not just someone I like or someone I talk to every day.
 You are the person who has found a place in my heart without even trying.
-You are my Shuu, my comfort, my favorite chaos, and the girl I would choose again and again.
+You are my Shuu, my comfort, my favorite chaos, and the girl I would choose again and again. 💞
 </p>
 
 <p>
@@ -339,7 +597,7 @@ Happy Birthday, my Shruti. 🖤<br>
 
 </section>
 
-<section class="final">
+<section class="story-page final">
 
 <p class="label">
 one last thing, shuu...
@@ -367,7 +625,79 @@ protecting your peace, and loving you more than words can say.
 
 </section>
 
+<nav class="page-controls" aria-label="Birthday surprise navigation">
+<button class="page-arrow" id="previous-page" type="button" onclick="changePage(-1)" aria-label="Previous page" title="Previous page">←</button>
+<div class="page-status" aria-live="polite">
+<span id="page-count">01 / 01</span>
+<span class="progress-track" role="progressbar" aria-label="Surprise progress" aria-valuemin="1" aria-valuemax="1" aria-valuenow="1"><span class="progress-fill" id="progress-fill"></span></span>
+</div>
+<button class="page-arrow" id="next-page" type="button" onclick="changePage(1)" aria-label="Next page" title="Next page">→</button>
+</nav>
+
 <script>
+const storyPages = Array.from(document.querySelectorAll(".story-page"));
+let currentPage = 0;
+
+function showPage(pageIndex){
+    if(pageIndex < 0 || pageIndex >= storyPages.length){
+        return;
+    }
+
+    currentPage = pageIndex;
+
+    storyPages.forEach((page, index) => {
+        const isActive = index === currentPage;
+        page.hidden = !isActive;
+        page.classList.toggle("is-active", isActive);
+        page.setAttribute("aria-hidden", String(!isActive));
+    });
+
+    const previousButton = document.getElementById("previous-page");
+    const nextButton = document.getElementById("next-page");
+    const pageCount = document.getElementById("page-count");
+    const progressBar = document.querySelector(".progress-track");
+    const progressFill = document.getElementById("progress-fill");
+    const isLastPage = currentPage === storyPages.length - 1;
+    const mustChoose = storyPages[currentPage].classList.contains("choice-page");
+
+    previousButton.disabled = currentPage === 0;
+    nextButton.disabled = mustChoose;
+    nextButton.textContent = isLastPage ? "↺" : "→";
+    nextButton.setAttribute("aria-label", isLastPage ? "Start again" : "Next page");
+    nextButton.title = isLastPage ? "Start again" : "Next page";
+    pageCount.textContent = `${String(currentPage + 1).padStart(2, "0")} / ${String(storyPages.length).padStart(2, "0")}`;
+    progressBar.setAttribute("aria-valuemax", String(storyPages.length));
+    progressBar.setAttribute("aria-valuenow", String(currentPage + 1));
+    progressFill.style.width = `${((currentPage + 1) / storyPages.length) * 100}%`;
+
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function changePage(direction){
+    if(currentPage === storyPages.length - 1 && direction > 0){
+        showPage(0);
+        return;
+    }
+
+    if(direction > 0 && storyPages[currentPage].classList.contains("choice-page")){
+        return;
+    }
+
+    showPage(currentPage + direction);
+}
+
+function chooseOption(button){
+    const reveal = document.getElementById(button.dataset.revealTarget);
+
+    if(reveal){
+        reveal.textContent = button.dataset.reveal;
+        reveal.hidden = false;
+        showPage(currentPage + 1);
+    }
+}
+
+showPage(0);
+
 const birthday = new Date("October 3, 2026 00:00:00").getTime();
 
 function countdown(){
